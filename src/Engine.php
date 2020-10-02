@@ -106,7 +106,7 @@ final class Engine
         foreach ($data as $indexName => $objects) {
             $result[$indexName] = $this->client
                 ->getIndex($indexName)
-                ->deleteDocument($objects);
+                ->deleteDocuments($objects);
         }
 
         return $result;

@@ -19,9 +19,12 @@
             <tag name="doctrine_mongodb.odm.event_subscriber"/>
         </service>
 
+        <service id="search.http_client" class="Symfony\Component\HttpClient\HttplugClient" />
+
         <service id="search.client" class="MeiliSearch\Client" public="true" lazy="true">
             <argument key="$url">%env(MEILISEARCH_URL)%</argument>
             <argument key="$apiKey">%env(MEILISEARCH_API_KEY)%</argument>
+            <argument key="$client">@search.http_client</argument>
         </service>
 
         <service id="MeiliSearch\Client" alias="search.client"/>
