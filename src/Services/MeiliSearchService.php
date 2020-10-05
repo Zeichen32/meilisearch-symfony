@@ -224,6 +224,10 @@ final class MeiliSearchService implements SearchService
                 $entityClass = $className;
             }
 
+            if (is_array($id) && isset($id['id'])) {
+                $id = $id['id'];
+            }
+			
             $repo = $objectManager->getRepository($entityClass);
             $entity = $repo->findOneBy(['id' => $id]);
 
